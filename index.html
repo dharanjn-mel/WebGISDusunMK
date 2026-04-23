@@ -43,7 +43,6 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -53,13 +52,12 @@
       min-height: 100vh;
     }
 
-    /* ── HERO ─────────────────────────────────────── */
-    .hero { padding: 28px 0 20px; }
-
     .container {
       width: min(1200px, calc(100% - 32px));
       margin: 0 auto;
     }
+
+    .hero { padding: 28px 0 20px; }
 
     .hero-card {
       background: linear-gradient(135deg, var(--hero-bg) 0%, var(--hero-mid) 100%);
@@ -72,7 +70,6 @@
       box-shadow: var(--shadow-lg);
     }
 
-    /* green glow top-right */
     .hero-card::before {
       content: "";
       position: absolute;
@@ -83,7 +80,6 @@
       pointer-events: none;
     }
 
-    /* left accent line */
     .hero-card::after {
       content: "";
       position: absolute;
@@ -118,7 +114,7 @@
 
     @keyframes pulse {
       0%, 100% { opacity: 1; transform: scale(1); }
-      50%       { opacity: 0.6; transform: scale(0.8); }
+      50% { opacity: 0.6; transform: scale(0.8); }
     }
 
     .hero-title {
@@ -134,9 +130,40 @@
       font-size: 13px;
       color: rgba(255,255,255,0.55);
       font-weight: 400;
+      margin-bottom: 18px;
     }
 
-    /* ── STAT CARDS ───────────────────────────────── */
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .hero-link {
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      transition: 0.2s ease;
+    }
+
+    .hero-link.primary {
+      background: var(--near);
+      color: white;
+    }
+
+    .hero-link.secondary {
+      background: rgba(255,255,255,0.10);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .hero-link:hover {
+      transform: translateY(-1px);
+      opacity: 0.95;
+    }
+
     .stats {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
@@ -209,7 +236,6 @@
       100% { background-position: -200% 0; }
     }
 
-    /* ── MAP SECTION ──────────────────────────────── */
     .map-section { padding: 8px 0 24px; }
 
     .map-wrapper {
@@ -250,7 +276,6 @@
       align-items: center;
     }
 
-    /* basemap switcher */
     .basemap-switcher {
       display: flex;
       background: var(--primary-soft);
@@ -322,7 +347,6 @@
       min-height: 520px;
     }
 
-    /* ── OVERLAYS ─────────────────────────────────── */
     .legend {
       position: absolute;
       bottom: 18px;
@@ -330,7 +354,6 @@
       z-index: 5;
       background: rgba(255,255,255,0.96);
       backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
       padding: 14px 16px;
@@ -339,7 +362,8 @@
     }
 
     .legend h3,
-    .layer-toggle h3 {
+    .layer-toggle h3,
+    .info-box h3 {
       font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
@@ -373,7 +397,6 @@
       z-index: 5;
       background: rgba(255,255,255,0.96);
       backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
       padding: 14px 16px;
@@ -400,7 +423,6 @@
       user-select: none;
     }
 
-    /* toggle switch */
     .switch {
       position: relative;
       display: inline-block;
@@ -434,7 +456,6 @@
     .switch input:checked + .slider.far-sl { background: var(--far); }
     .switch input:checked + .slider::before { transform: translateX(15px); }
 
-    /* ── POPUP ────────────────────────────────────── */
     .mapboxgl-popup-content {
       font-family: 'Plus Jakarta Sans', sans-serif;
       border-radius: var(--radius-md) !important;
@@ -471,7 +492,7 @@
     }
 
     .popup-badge.near { background: #dcf0eb; color: var(--near-dark); }
-    .popup-badge.far  { background: #ddeae7; color: var(--far-dark);  }
+    .popup-badge.far  { background: #ddeae7; color: var(--far-dark); }
 
     .popup-title {
       font-size: 14px;
@@ -494,7 +515,42 @@
     .popup-key { color: var(--muted); font-weight: 500; }
     .popup-val { font-weight: 600; color: var(--text); }
 
-    /* ── FOOTER ───────────────────────────────────── */
+    .iframe-wrap {
+      padding: 18px;
+      background: white;
+    }
+
+    .iframe-box {
+      width: 100%;
+      height: 680px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      background: #f8f8f8;
+    }
+
+    .iframe-box iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    .info-box {
+      margin-bottom: 14px;
+      padding: 16px 18px;
+      background: #f8fcfb;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      color: var(--text);
+    }
+
+    .info-box p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
     .footer { padding: 0 0 28px; }
 
     .footer-card {
@@ -525,7 +581,6 @@
       border-radius: 999px;
     }
 
-    /* ── MAPBOX OVERRIDES ─────────────────────────── */
     .mapboxgl-ctrl-group {
       border-radius: var(--radius-sm) !important;
       overflow: hidden;
@@ -540,36 +595,43 @@
       border-radius: 4px !important;
     }
 
-    /* ── RESPONSIVE ───────────────────────────────── */
     @media (max-width: 768px) {
       .hero-card { padding: 24px 20px 20px; }
       .map-topbar { align-items: flex-start; }
       #map { height: 62vh; min-height: 460px; }
-      .legend       { left: 12px; bottom: 12px; }
+      .legend { left: 12px; bottom: 12px; }
       .layer-toggle { right: 12px; bottom: 12px; }
       .basemap-switcher { display: none; }
+      .iframe-box { height: 520px; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ═══════════════ HERO ═══════════════ -->
   <section class="hero">
     <div class="container">
-
       <div class="hero-card">
         <div class="hero-badge">
           <span class="hero-dot"></span>
           WebGIS · Analisis Aksesibilitas Jalan
         </div>
+
         <h1 class="hero-title">
           WebGIS Dusun Mulungan Kulon,<br>
           Sendangadi, Mlati, Sleman, Yogyakarta
         </h1>
-        <p class="hero-sub">Klasifikasi bangunan berdasarkan kedekatan terhadap Jalan Magelang</p>
+
+        <p class="hero-sub">
+          Klasifikasi bangunan berdasarkan kedekatan terhadap Jalan Magelang
+        </p>
+
+        <div class="hero-actions">
+          <a href="#map-manual" class="hero-link primary">Lihat Peta Manual</a>
+          <a href="#map-qgis2web" class="hero-link secondary">Lihat Peta QGIS2Web</a>
+        </div>
       </div>
 
-      <!-- Stat cards: diisi otomatis setelah GeoJSON selesai load -->
       <div class="stats">
         <div class="stat-card">
           <div class="stat-label">Bangunan Dekat Jalan</div>
@@ -599,39 +661,33 @@
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- ═══════════════ MAP ═══════════════ -->
-  <section class="map-section">
+  <section class="map-section" id="map-manual">
     <div class="container">
       <div class="map-wrapper">
 
-        <!-- Topbar -->
         <div class="map-topbar">
           <div class="map-title-group">
-            <h2>Peta Interaktif Dusun Mulungan Kulon</h2>
+            <h2>Peta Interaktif Manual</h2>
             <p>Klik bangunan untuk melihat detail atribut spasial</p>
           </div>
 
           <div class="map-actions">
-            <!-- Basemap switcher -->
             <div class="basemap-switcher">
               <button class="basemap-btn active" id="btn-satellite" onclick="setBasemap('satellite')">Satelit</button>
-              <button class="basemap-btn"        id="btn-light"     onclick="setBasemap('light')">Light</button>
+              <button class="basemap-btn" id="btn-light" onclick="setBasemap('light')">Light</button>
             </div>
 
             <button class="btn btn-primary" onclick="flyToLokasi()">Ke Lokasi Utama</button>
-            <button class="btn btn-soft"    onclick="resetView()">Reset</button>
+            <button class="btn btn-soft" onclick="resetView()">Reset</button>
           </div>
         </div>
 
-        <!-- Map canvas + overlays -->
         <div style="position: relative;">
           <div id="map"></div>
 
-          <!-- Legend -->
           <div class="legend">
             <h3>Legenda</h3>
             <div class="legend-item">
@@ -644,7 +700,6 @@
             </div>
           </div>
 
-          <!-- Layer Toggle -->
           <div class="layer-toggle">
             <h3>Tampilkan Layer</h3>
 
@@ -654,8 +709,7 @@
                 Dekat Jalan
               </label>
               <label class="switch">
-                <input type="checkbox" id="toggle-near" checked
-                       onchange="toggleLayer('dekat', this.checked)">
+                <input type="checkbox" id="toggle-near" checked onchange="toggleLayer('dekat', this.checked)">
                 <span class="slider"></span>
               </label>
             </div>
@@ -666,19 +720,48 @@
                 Jauh dari Jalan
               </label>
               <label class="switch">
-                <input type="checkbox" id="toggle-far" checked
-                       onchange="toggleLayer('jauh', this.checked)">
+                <input type="checkbox" id="toggle-far" checked onchange="toggleLayer('jauh', this.checked)">
                 <span class="slider far-sl"></span>
               </label>
             </div>
           </div>
-
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <section class="map-section" id="map-qgis2web">
+    <div class="container">
+      <div class="map-wrapper">
+
+        <div class="map-topbar">
+          <div class="map-title-group">
+            <h2>Peta Hasil QGIS2Web</h2>
+            <p>Visualisasi otomatis hasil export plugin QGIS2Web</p>
+          </div>
+        </div>
+
+        <div class="iframe-wrap">
+          <div class="info-box">
+            <h3>Informasi</h3>
+            <p>
+              Bagian ini menampilkan peta hasil export QGIS2Web dalam website yang sama.
+              Folder hasil export harus disimpan utuh di dalam folder <strong>qgis2web</strong>
+              agar semua file <strong>resources</strong>, <strong>layers</strong>, dan
+              <strong>styles</strong> tetap terbaca.
+            </p>
+          </div>
+
+          <div class="iframe-box">
+            <iframe src="qgis2web/index.html" loading="lazy"></iframe>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <footer class="footer">
     <div class="container">
       <div class="footer-card">
@@ -688,13 +771,12 @@
         <div class="footer-tags">
           <span class="footer-tag">SIG / GIS</span>
           <span class="footer-tag">Mapbox GL JS</span>
-          <span class="footer-tag">Analisis Aksesibilitas</span>
+          <span class="footer-tag">QGIS2Web</span>
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- ═══════════════ JAVASCRIPT ═══════════════ -->
   <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoiZGhybjIxIiwiYSI6ImNtbm9meDNxcTI0Y2sycXEyaG43dnJqajIifQ.p1s6U3VJQR6jJu0kSN2WLQ';
 
@@ -714,44 +796,42 @@
     };
 
     let currentBasemap = 'satellite';
-    let statsLoaded    = false;
+    let statsLoaded = false;
 
-    // ────────────────────────────────────────────────
-    // MAP INIT
-    // ────────────────────────────────────────────────
     const map = new mapboxgl.Map({
-      container:  'map',
-      style:      STYLES.satellite,
-      center:     CENTER,
-      zoom:       ZOOM_INIT,
-      pitch:      PITCH_INIT,
-      bearing:    BEAR_INIT,
-      antialias:  true
+      container: 'map',
+      style: STYLES.satellite,
+      center: CENTER,
+      zoom: ZOOM_INIT,
+      pitch: PITCH_INIT,
+      bearing: BEAR_INIT,
+      antialias: true
     });
 
     map.addControl(new mapboxgl.NavigationControl(), 'top-right');
-    map.addControl(new mapboxgl.FullscreenControl(),  'top-right');
+    map.addControl(new mapboxgl.FullscreenControl(), 'top-right');
     map.addControl(new mapboxgl.ScaleControl({ maxWidth: 120, unit: 'metric' }), 'bottom-right');
     map.addControl(new mapboxgl.GeolocateControl({
-      positionOptions:  { enableHighAccuracy: true },
+      positionOptions: { enableHighAccuracy: true },
       trackUserLocation: true,
-      showUserHeading:  true
+      showUserHeading: true
     }), 'top-right');
 
-    // ────────────────────────────────────────────────
-    // LOAD LAYERS
-    // ────────────────────────────────────────────────
     map.on('load', () => {
       addSources();
       addLayers('satellite');
       addPopup('dekat-fill', 'near');
-      addPopup('jauh-fill',  'far');
+      addPopup('jauh-fill', 'far');
       scheduleStats();
     });
 
     function addSources() {
-      map.addSource('dekat', { type: 'geojson', data: GEOJSON.dekat });
-      map.addSource('jauh',  { type: 'geojson', data: GEOJSON.jauh  });
+      if (!map.getSource('dekat')) {
+        map.addSource('dekat', { type: 'geojson', data: GEOJSON.dekat });
+      }
+      if (!map.getSource('jauh')) {
+        map.addSource('jauh', { type: 'geojson', data: GEOJSON.jauh });
+      }
     }
 
     function addLayers(basemap) {
@@ -760,42 +840,62 @@
       const nearOpacity = basemap === 'light' ? 0.80 : 0.88;
       const farOpacity  = basemap === 'light' ? 0.76 : 0.88;
 
-      map.addLayer({
-        id: 'dekat-fill', type: 'fill-extrusion', source: 'dekat',
-        paint: {
-          'fill-extrusion-color':   nearColor,
-          'fill-extrusion-height':  3,
-          'fill-extrusion-base':    0,
-          'fill-extrusion-opacity': nearOpacity
-        }
-      });
+      if (!map.getLayer('dekat-fill')) {
+        map.addLayer({
+          id: 'dekat-fill',
+          type: 'fill-extrusion',
+          source: 'dekat',
+          paint: {
+            'fill-extrusion-color': nearColor,
+            'fill-extrusion-height': 3,
+            'fill-extrusion-base': 0,
+            'fill-extrusion-opacity': nearOpacity
+          }
+        });
+      }
 
-      map.addLayer({
-        id: 'dekat-outline', type: 'line', source: 'dekat',
-        paint: { 'line-color': '#2f8070', 'line-width': 1.2, 'line-opacity': 0.9 }
-      });
+      if (!map.getLayer('dekat-outline')) {
+        map.addLayer({
+          id: 'dekat-outline',
+          type: 'line',
+          source: 'dekat',
+          paint: {
+            'line-color': '#2f8070',
+            'line-width': 1.2,
+            'line-opacity': 0.9
+          }
+        });
+      }
 
-      map.addLayer({
-        id: 'jauh-fill', type: 'fill-extrusion', source: 'jauh',
-        paint: {
-          'fill-extrusion-color':   farColor,
-          'fill-extrusion-height':  3,
-          'fill-extrusion-base':    0,
-          'fill-extrusion-opacity': farOpacity
-        }
-      });
+      if (!map.getLayer('jauh-fill')) {
+        map.addLayer({
+          id: 'jauh-fill',
+          type: 'fill-extrusion',
+          source: 'jauh',
+          paint: {
+            'fill-extrusion-color': farColor,
+            'fill-extrusion-height': 3,
+            'fill-extrusion-base': 0,
+            'fill-extrusion-opacity': farOpacity
+          }
+        });
+      }
 
-      map.addLayer({
-        id: 'jauh-outline', type: 'line', source: 'jauh',
-        paint: { 'line-color': '#4f7f76', 'line-width': 1.2, 'line-opacity': 0.9 }
-      });
+      if (!map.getLayer('jauh-outline')) {
+        map.addLayer({
+          id: 'jauh-outline',
+          type: 'line',
+          source: 'jauh',
+          paint: {
+            'line-color': '#4f7f76',
+            'line-width': 1.2,
+            'line-opacity': 0.9
+          }
+        });
+      }
     }
 
-    // ────────────────────────────────────────────────
-    // STAT CARDS — hitung dari GeoJSON yang sudah di-load
-    // ────────────────────────────────────────────────
     function scheduleStats() {
-      // Tunggu sampai map idle sehingga tiles sudah di-render
       map.once('idle', () => {
         const uniq = (arr) =>
           [...new Map(arr.map(f => [f.id ?? JSON.stringify(f.properties), f])).values()];
@@ -805,7 +905,6 @@
         const nTotal = nDekat + nJauh;
 
         if (nTotal === 0) {
-          // Kalau masih kosong, coba fallback via fetch
           fetchCountFallback();
         } else {
           renderStats(nDekat, nJauh, nTotal);
@@ -813,17 +912,15 @@
       });
     }
 
-    // Fallback: hitung langsung dari file GeoJSON via fetch
     function fetchCountFallback() {
       Promise.all([
         fetch(GEOJSON.dekat).then(r => r.json()),
         fetch(GEOJSON.jauh).then(r => r.json())
       ]).then(([gDekat, gJauh]) => {
         const nDekat = gDekat.features ? gDekat.features.length : 0;
-        const nJauh  = gJauh.features  ? gJauh.features.length  : 0;
+        const nJauh  = gJauh.features ? gJauh.features.length : 0;
         renderStats(nDekat, nJauh, nDekat + nJauh);
       }).catch(() => {
-        // Kalau fetch gagal, tampilkan tanda tanya
         ['stat-near','stat-far','stat-total'].forEach(id => {
           document.getElementById(id).textContent = '—';
         });
@@ -834,39 +931,32 @@
       if (statsLoaded) return;
       statsLoaded = true;
 
-      document.getElementById('stat-near').textContent  = near.toLocaleString('id-ID');
-      document.getElementById('stat-far').textContent   = far.toLocaleString('id-ID');
+      document.getElementById('stat-near').textContent = near.toLocaleString('id-ID');
+      document.getElementById('stat-far').textContent = far.toLocaleString('id-ID');
       document.getElementById('stat-total').textContent = total.toLocaleString('id-ID');
 
       requestAnimationFrame(() => {
-        document.getElementById('bar-near').style.width  = total ? (near  / total * 100).toFixed(1) + '%' : '0%';
-        document.getElementById('bar-far').style.width   = total ? (far   / total * 100).toFixed(1) + '%' : '0%';
+        document.getElementById('bar-near').style.width  = total ? (near / total * 100).toFixed(1) + '%' : '0%';
+        document.getElementById('bar-far').style.width   = total ? (far / total * 100).toFixed(1) + '%' : '0%';
         document.getElementById('bar-total').style.width = '100%';
       });
     }
 
-    // ────────────────────────────────────────────────
-    // POPUP — tampilkan hanya field yang relevan
-    // ────────────────────────────────────────────────
-
-    // Mapping nama field GeoJSON → label ramah pengguna
-    // Sesuaikan dengan nama field aktual di file GeoJSON kamu
     const FIELD_MAP = {
-      'nama':       'Nama Bangunan',
-      'name':       'Nama Bangunan',
-      'kategori':   'Kategori',
-      'fungsi':     'Fungsi',
-      'jarak_m':    'Jarak ke Jalan',
-      'jarak':      'Jarak ke Jalan',
-      'luas_m2':    'Luas Bangunan',
-      'luas':       'Luas Bangunan',
-      'lantai':     'Jumlah Lantai',
-      'kondisi':    'Kondisi',
-      'ket':        'Keterangan',
+      'nama': 'Nama Bangunan',
+      'name': 'Nama Bangunan',
+      'kategori': 'Kategori',
+      'fungsi': 'Fungsi',
+      'jarak_m': 'Jarak ke Jalan',
+      'jarak': 'Jarak ke Jalan',
+      'luas_m2': 'Luas Bangunan',
+      'luas': 'Luas Bangunan',
+      'lantai': 'Jumlah Lantai',
+      'kondisi': 'Kondisi',
+      'ket': 'Keterangan',
       'keterangan': 'Keterangan'
     };
 
-    // Field teknis yang disembunyikan dari popup
     const HIDDEN = new Set([
       'fid','id','gid','ogc_fid','osm_id','osm_way_id',
       'geom','geom_type','shape_area','shape_len',
@@ -877,9 +967,7 @@
     function buildPopupHTML(props, type) {
       const isNear = type === 'near';
       const label  = isNear ? 'Dekat Jalan' : 'Jauh dari Jalan';
-
-      // Nama bangunan untuk judul popup
-      const title = props.nama || props.name || props.NAMA || props.NAME || 'Bangunan';
+      const title  = props.nama || props.name || props.NAMA || props.NAME || 'Bangunan';
 
       let rows = '';
       let count = 0;
@@ -887,12 +975,11 @@
       for (const [rawKey, val] of Object.entries(props)) {
         const key = rawKey.toLowerCase();
         if (HIDDEN.has(key)) continue;
-        if (key === 'nama' || key === 'name') continue; // sudah jadi judul
+        if (key === 'nama' || key === 'name') continue;
 
         const fieldLabel = FIELD_MAP[key] || rawKey;
-
-        // Format khusus untuk beberapa field
         let display = val ?? '—';
+
         if ((key === 'jarak_m' || key === 'jarak') && !isNaN(val)) {
           display = parseFloat(val).toFixed(1) + ' m';
         } else if ((key === 'luas_m2' || key === 'luas') && !isNaN(val)) {
@@ -906,15 +993,15 @@
           </div>`;
 
         count++;
-        if (count >= 6) break; // maks 6 field agar popup tidak terlalu panjang
+        if (count >= 6) break;
       }
 
-      // Fallback kalau tidak ada field yang cocok
       if (!rows) {
-        rows = `<div class="popup-row">
-          <span class="popup-key">Tipe</span>
-          <span class="popup-val">${label}</span>
-        </div>`;
+        rows = `
+          <div class="popup-row">
+            <span class="popup-key">Tipe</span>
+            <span class="popup-val">${label}</span>
+          </div>`;
       }
 
       return `
@@ -934,54 +1021,44 @@
           offset: 12,
           maxWidth: '280px'
         })
-          .setLngLat(e.lngLat)
-          .setHTML(buildPopupHTML(props, type))
-          .addTo(map);
+        .setLngLat(e.lngLat)
+        .setHTML(buildPopupHTML(props, type))
+        .addTo(map);
       });
 
       map.on('mouseenter', layerId, () => { map.getCanvas().style.cursor = 'pointer'; });
-      map.on('mouseleave', layerId, () => { map.getCanvas().style.cursor = '';        });
+      map.on('mouseleave', layerId, () => { map.getCanvas().style.cursor = ''; });
     }
 
-    // ────────────────────────────────────────────────
-    // BASEMAP SWITCHER
-    // ────────────────────────────────────────────────
     function setBasemap(type) {
       if (type === currentBasemap) return;
       currentBasemap = type;
 
       document.getElementById('btn-satellite').classList.toggle('active', type === 'satellite');
-      document.getElementById('btn-light').classList.toggle('active',     type === 'light');
+      document.getElementById('btn-light').classList.toggle('active', type === 'light');
 
-      // Simpan posisi kamera sebelum ganti style
       const cam = {
-        center:  map.getCenter(),
-        zoom:    map.getZoom(),
-        pitch:   map.getPitch(),
+        center: map.getCenter(),
+        zoom: map.getZoom(),
+        pitch: map.getPitch(),
         bearing: map.getBearing()
       };
 
       map.setStyle(STYLES[type]);
 
-      // Re-add sumber dan layer setelah style baru selesai load
       map.once('style.load', () => {
         addSources();
         addLayers(type);
         addPopup('dekat-fill', 'near');
-        addPopup('jauh-fill',  'far');
+        addPopup('jauh-fill', 'far');
 
-        // Kembalikan kamera
         map.jumpTo(cam);
 
-        // Terapkan kembali state toggle layer
         setLayerVis('dekat', document.getElementById('toggle-near').checked);
-        setLayerVis('jauh',  document.getElementById('toggle-far').checked);
+        setLayerVis('jauh', document.getElementById('toggle-far').checked);
       });
     }
 
-    // ────────────────────────────────────────────────
-    // LAYER TOGGLE
-    // ────────────────────────────────────────────────
     function setLayerVis(prefix, visible) {
       const v = visible ? 'visible' : 'none';
       [`${prefix}-fill`, `${prefix}-outline`].forEach(id => {
@@ -993,32 +1070,28 @@
       setLayerVis(prefix, checked);
     }
 
-    // ────────────────────────────────────────────────
-    // NAVIGASI
-    // ────────────────────────────────────────────────
     function flyToLokasi() {
       map.flyTo({
-        center:   [110.362, -7.727],
-        zoom:     18,
-        pitch:    70,
-        bearing:  -25,
-        speed:    0.9,
-        curve:    1.2,
+        center: [110.362, -7.727],
+        zoom: 18,
+        pitch: 70,
+        bearing: -25,
+        speed: 0.9,
+        curve: 1.2,
         essential: true
       });
     }
 
     function resetView() {
       map.flyTo({
-        center:   CENTER,
-        zoom:     ZOOM_INIT,
-        pitch:    PITCH_INIT,
-        bearing:  BEAR_INIT,
-        speed:    1,
+        center: CENTER,
+        zoom: ZOOM_INIT,
+        pitch: PITCH_INIT,
+        bearing: BEAR_INIT,
+        speed: 1,
         essential: true
       });
     }
   </script>
-
 </body>
 </html>
